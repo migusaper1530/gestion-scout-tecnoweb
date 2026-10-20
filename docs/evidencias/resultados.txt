@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.4, pytest-8.4.2, pluggy-1.7.0 -- /home/miguel/Documents/Codex/2026-10-20/qui/work/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/miguel/Documents/universidad/tecnoweb 2/examen
+plugins: anyio-4.15.1
+collecting ... collected 17 items
+
+tests/test_integracion.py::test_01_autenticacion PASSED                  [  5%]
+tests/test_integracion.py::test_02_gateway_swagger_health PASSED         [ 11%]
+tests/test_integracion.py::test_03_crud_rama PASSED                      [ 17%]
+tests/test_integracion.py::test_04_crud_scout_filtros PASSED             [ 23%]
+tests/test_integracion.py::test_05_crud_actividad PASSED                 [ 29%]
+tests/test_integracion.py::test_06_crud_inscripcion_y_reactivar PASSED   [ 35%]
+tests/test_integracion.py::test_07_duplicado_y_cupo PASSED               [ 41%]
+tests/test_integracion.py::test_08_ultimo_cupo_concurrente PASSED        [ 47%]
+tests/test_integracion.py::test_09_rama_inactivos_y_referencias PASSED   [ 52%]
+tests/test_integracion.py::test_10_estado_y_fechas PASSED                [ 58%]
+tests/test_integracion.py::test_11_validacion[change0] PASSED            [ 64%]
+tests/test_integracion.py::test_11_validacion[change1] PASSED            [ 70%]
+tests/test_integracion.py::test_11_validacion[change2] PASSED            [ 76%]
+tests/test_integracion.py::test_11_validacion[change3] PASSED            [ 82%]
+tests/test_integracion.py::test_11_validacion[change4] PASSED            [ 88%]
+tests/test_integracion.py::test_12_reactivar_sin_cupo_y_rama_cambiante PASSED [ 94%]
+tests/test_integracion.py::test_99_rate_limiting_login PASSED            [100%]
+
+============================== 17 passed in 4.37s ==============================

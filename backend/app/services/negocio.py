@@ -41,8 +41,10 @@ class GestionService:
         if id:
             if data.cupo_maximo < self.actividades.inscritos(id): conflicto('El cupo es menor a las inscripciones activas')
             if data.rama_id is not None:
-                incompatible = self.db.scalar(select(Scout.id).join(Inscripcion, Inscripcion.scout_id == Scout.id).where(Inscripcion.actividad_id == id, Inscripcion.estado == 'inscrito', Scout.rama_id != data.rama_id).limit(1))
-                if incompatible: conflicto('Hay inscritos de otra rama; cancele sus inscripciones primero')
+                # Lock enrolled scouts too: serialize a concurrent scout branch change.
+                scouts = self.db.scalars(select(Scout).join(Inscripcion, Inscripcion.scout_id == Scout.id).where(Inscripcion.actividad_id == id, Inscripcion.estado == 'inscrito').order_by(Scout.id).with_for_update(of=Scout)).all()
+                if any(s.rama_id != data.rama_id for s in scouts):
+                    conflicto('Hay inscritos de otra rama; cancele sus inscripciones primero')
         for k, v in data.model_dump().items(): setattr(actividad, k, v)
         self.db.add(actividad)
         self.db.commit()
