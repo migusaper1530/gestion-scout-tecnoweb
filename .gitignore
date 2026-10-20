@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+work/
+*.dump
+backups/
+docs/evidencias/*
+!docs/evidencias/README.md
+!docs/evidencias/resultados.txt
+!docs/evidencias/docker-verificacion.txt
