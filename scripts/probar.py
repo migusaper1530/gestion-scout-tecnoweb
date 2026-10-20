@@ -18,6 +18,7 @@ with (evidence/'resultados.txt').open('w') as f:
     result=subprocess.run([sys.executable,'-m','pytest','tests/test_integracion.py','-v','--tb=short'],env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
     f.write(result.stdout);print(result.stdout)
 run(compose+['ps'],stdout=(evidence/'estado-docker.txt').open('w'))
+with (evidence/'gateway.log').open('w') as f: run(compose+['logs','--no-color','gateway','backend'],stdout=f)
 # Enrollment fixtures remove only their own records; account persists across restart.
 run(compose+['down'])
 run(compose+['up','-d','--wait'])
@@ -28,6 +29,6 @@ with (evidence/'docker-verificacion.txt').open('w') as f:
     f.write('Migración 001 desde volumen aislado inicialmente vacío; servicios saludables.\n')
     f.write('docker compose down + up --wait: login del dirigente persistente = HTTP 200.\n')
     run(compose+['ps'],stdout=f)
-with (evidence/'gateway.log').open('w') as f: run(compose+['logs','--no-color','gateway','backend'],stdout=f)
+with (evidence/'gateway.log').open('a') as f: run(compose+['logs','--no-color','gateway','backend'],stdout=f)
 # Leave container running for inspection. The documented cleanup removes only test data.
 sys.exit(result.returncode)
