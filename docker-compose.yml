@@ -1,0 +1,49 @@
+name: gestion-scout
+services:
+  db:
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_DB: scout
+      POSTGRES_USER: scout
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Ejecute python3 scripts/configurar.py}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks: [scout_net]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U scout -d scout']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://scout:${POSTGRES_PASSWORD}@db:5432/scout
+      JWT_SECRET: ${JWT_SECRET:?Ejecute python3 scripts/configurar.py}
+      GROUP_NAME: ${GROUP_NAME:-Grupo Scout Horizonte}
+      TOKEN_MINUTES: ${TOKEN_MINUTES:-30}
+    depends_on:
+      db: {condition: service_healthy}
+    networks: [scout_net]
+    restart: unless-stopped
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    environment:
+      API_RATE: ${API_RATE:-20r/s}
+      LOGIN_RATE: ${LOGIN_RATE:-5r/m}
+      PUBLIC_SCHEME: ${PUBLIC_SCHEME:-http}
+    ports:
+      - '${BIND_ADDRESS:-127.0.0.1}:${GATEWAY_PORT:-8080}:80'
+    depends_on:
+      backend: {condition: service_healthy}
+    networks: [scout_net]
+    restart: unless-stopped
+networks:
+  scout_net:
+    driver: bridge
+volumes:
+  postgres_data:
