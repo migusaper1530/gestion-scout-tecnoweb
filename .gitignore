@@ -12,3 +12,13 @@ docs/evidencias/*
 !docs/evidencias/README.md
 !docs/evidencias/resultados.txt
 !docs/evidencias/docker-verificacion.txt
+!docs/evidencias/estado-docker.txt
+!docs/evidencias/gateway-extracto.log
+!docs/evidencias/interfaz.png
+!docs/evidencias/swagger.png
+!docs/evidencias/navegador.txt
+!docs/evidencias/interfaz.jpg
+!docs/evidencias/interfaz-movil.jpg
+!docs/evidencias/swagger.jpg
+!docs/evidencias/openapi.json
+!docs/evidencias/curl.txt

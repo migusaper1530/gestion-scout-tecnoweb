@@ -1,0 +1,6 @@
+# A separate Compose project gets its own network and named volume.
+services:
+  gateway:
+    environment:
+      API_RATE: 1000r/s
+      LOGIN_RATE: 5r/m

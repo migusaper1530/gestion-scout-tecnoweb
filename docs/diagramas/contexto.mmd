@@ -1,0 +1,6 @@
+flowchart LR
+  dirigente["Dirigente · Persona\nÚnico usuario con cuenta"]
+  subgraph sistema["Límite del sistema"]
+    scout["Gestión Scout · Sistema de software\nOrganiza ramas, scouts, actividades e inscripciones"]
+  end
+  dirigente -->|"Gestiona el grupo · HTTP local / navegador"| scout

@@ -1,0 +1,3 @@
+Comandos cURL de README ejecutados contra gateway local: login, resumen, crear rama/scout/actividad/inscripción, consultar cupos, cancelar y eliminar.
+Resultado: todos los comandos finalizaron con HTTP de éxito; curl -f activo.
+Se eliminaron únicamente los registros creados por esta comprobación. Sin tokens ni contraseñas en esta evidencia.

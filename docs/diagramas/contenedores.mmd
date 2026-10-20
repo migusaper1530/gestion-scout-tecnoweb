@@ -1,0 +1,12 @@
+flowchart TB
+  persona["Dirigente · Persona"]
+  subgraph sistema["Gestión Scout · Límite del sistema"]
+    frontend["Aplicación web · HTML / CSS / JavaScript\nSe ejecuta en el navegador; consume API relativa"]
+    gateway["API Gateway · Nginx\nSirve los archivos del frontend; logging y rate limiting"]
+    backend["Microservicio · FastAPI / SQLAlchemy\nJWT, CRUD, validación y reglas transaccionales"]
+    db[("Base de datos · PostgreSQL\nPersistencia, FK y UNIQUE; volumen nombrado")]
+    frontend -->|"HTTP :8080 · archivos / JSON"| gateway
+    gateway -->|"HTTP :8000 · API / Swagger"| backend
+    backend -->|"SQL / TCP :5432"| db
+  end
+  persona -->|Usa| frontend
