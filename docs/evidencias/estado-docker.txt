@@ -1,4 +1,4 @@
-NAME                    IMAGE                  COMMAND                  SERVICE   CREATED          STATUS                    PORTS
-scout-tests-backend-1   scout-tests-backend    "./start.sh"             backend   41 seconds ago   Up 35 seconds (healthy)   8000/tcp
-scout-tests-db-1        postgres:17.6-alpine   "docker-entrypoint.s…"   db        42 seconds ago   Up 41 seconds (healthy)   5432/tcp
-scout-tests-gateway-1   scout-tests-gateway    "/docker-entrypoint.…"   gateway   41 seconds ago   Up 23 seconds (healthy)   127.0.0.1:18080->80/tcp
+NAME                    IMAGE                                                                     COMMAND                  SERVICE   CREATED         STATUS                   PORTS
+scout-tests-backend-1   sha256:b687882f7b6daab5d861991584a382d39623f9f7f73fc675c9d9dde3d9320277   "./start.sh"             backend   3 minutes ago   Up 3 minutes (healthy)   8000/tcp
+scout-tests-db-1        postgres:17.6-alpine                                                      "docker-entrypoint.s…"   db        3 minutes ago   Up 3 minutes (healthy)   5432/tcp
+scout-tests-gateway-1   sha256:89eedcf7d2ce7625232e78fae8ca182eff9e2ba9ebe0781d257648f233d931ce   "/docker-entrypoint.…"   gateway   3 minutes ago   Up 3 minutes (healthy)   127.0.0.1:18080->80/tcp

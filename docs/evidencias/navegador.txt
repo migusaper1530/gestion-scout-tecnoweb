@@ -1,0 +1,15 @@
+Verificación manual real con navegador local, 20/10/2026 (America/La_Paz).
+Entrada: http://127.0.0.1:8080 (gateway Nginx).
+1. Login válido; resumen: 6 scouts, 3 actividades, 0 inscripciones iniciales.
+2. Nueva inscripción: Scout 1 Ejemplo Exploradores en Encuentro de Exploradores.
+3. Guardar: mensaje Cambios guardados; estado inscrito.
+4. Cancelar: estado cancelado y botón Reactivar.
+5. Reactivar: estado inscrito y botón Cancelar.
+6. Resumen: 1 inscripción activa; actividad muestra 9 cupos libres de 10.
+7. Swagger /docs: Authorize OAuth2 con cuenta local; autorización exitosa.
+8. Swagger GET /api/v1/ramas: HTTP 200 y JSON de las tres ramas ficticias.
+9. Consola del frontend sin errores o advertencias capturados.
+10. Vista móvil observada (304 px de captura); vista escritorio de 1280 px comprobada.
+Capturas JPEG reales. swagger.jpg recorta la región de URL/respuesta para excluir
+el cURL con token Bearer. No se edita ni se inventa el contenido de la respuesta.
+HTTPS público no ejecutado: aplicación local por decisión del autor.
